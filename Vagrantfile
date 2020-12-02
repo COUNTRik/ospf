@@ -44,13 +44,9 @@ Vagrant.configure("2") do |config|
           box.vm.network "private_network", ipconf
         end
         
-        if boxconfig.key?(:public)
-          box.vm.network "public_network", boxconfig[:public]
+        box.vm.provision "ansible" do |ansible|
+          ansible.playbook = "ansible/playbook/provision.yml"
         end
-        
-        # box.vm.provision "ansible" do |ansible|
-        #   ansible.playbook = "ansible/playbook/provision.yml"
-        # end
                 
     end
 

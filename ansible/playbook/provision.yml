@@ -1,0 +1,33 @@
+---
+- name: Install package
+  hosts: all
+  become: true
+  
+  tasks:
+    - name: Install user package
+      yum:
+        name:
+          - mc
+          - vim
+        state: latest
+      tags:
+        - package
+
+# - name: Enable forwarding ipv4
+#   hosts:
+#     - inet2Router
+#     - inetRouter
+#     - centralRouter
+#   become: true
+
+#   tasks:
+#     - name: enable forwarding ipv4
+#       shell: echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+    
+#     - name: restrat network
+#       systemd:
+#         name: network
+#         state: restarted
+#       tags:
+#         - forwarding
+
