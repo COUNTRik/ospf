@@ -2,32 +2,41 @@
 - name: Install package
   hosts: all
   become: true
-  
+
   tasks:
+    - name: Install repo FRR
+      shell: "/vagrant/scripts/frr.sh"
+    
     - name: Install user package
       yum:
         name:
           - mc
           - vim
+          - frr
+          - frr-pythontools
         state: latest
-      tags:
-        - package
 
-# - name: Enable forwarding ipv4
-#   hosts:
-#     - inet2Router
-#     - inetRouter
-#     - centralRouter
-#   become: true
-
-#   tasks:
-#     - name: enable forwarding ipv4
-#       shell: echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+    - name: Enable forwarding ipv4
+      shell: echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
     
-#     - name: restrat network
-#       systemd:
-#         name: network
-#         state: restarted
-#       tags:
-#         - forwarding
+    # - name: Restrat network
+    #   systemd:
+    #     name: NetworkManager
+    #     state: restarted
+    #   tags:
+    #     - forwarding
 
+    - name: Restrat network
+      systemd:
+        name: network
+        state: restarted
+
+    - name: Start frr service
+      systemd:
+        name: frr
+        state: started
+
+    - name: Enable frr service
+      systemd:
+        name: frr
+        enabled: yes

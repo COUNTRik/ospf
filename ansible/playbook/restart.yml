@@ -1,0 +1,31 @@
+---
+- name: Router1 FRR Configure
+  hosts: router1
+  become: true
+  
+  tasks:    
+    - name: Restart frr service
+      systemd:
+        name: frr
+        state: restarted
+        
+
+- name: Router2 FRR Configure
+  hosts: router2
+  become: true
+  
+  tasks:    
+    - name: Restart frr service
+      systemd:
+        name: frr
+        state: restarted
+
+- name: Router3 FRR Configure
+  hosts: router3
+  become: true
+  
+  tasks:    
+    - name: Restart frr service
+      systemd:
+        name: frr
+        state: restarted

@@ -1,0 +1,49 @@
+---
+- name: Router1 FRR Configure
+  hosts: router1
+  become: true
+  
+  tasks:
+    - name: Copy ospfd.conf
+      shell: cat /vagrant/config/ospfd1 > /etc/frr/ospfd.conf
+    
+    - name: OSPF yes
+      shell: sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+
+    - name: Restart FRR
+      systemd:
+        name: frr
+        state: restarted
+
+- name: Router2 FRR Configure
+  hosts: router2
+  become: true
+  
+  tasks:
+    - name: Copy zebra.conf
+      shell: cat /vagrant/config/ospfd2 > /etc/frr/ospfd.conf
+
+    - name: OSPF yes
+      shell: sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+
+    - name: Restart FRR
+      systemd:
+        name: frr
+        state: restarted
+      
+- name: Router3 FRR Configure
+  hosts: router3
+  become: true
+  
+  tasks:
+    - name: Copy zebra.conf
+      shell: cat /vagrant/config/ospfd3 > /etc/frr/ospfd.conf
+ 
+    - name: OSPF yes
+      shell: sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+
+    - name: Restart FRR
+      systemd:
+        name: frr
+        state: restarted
+ 
