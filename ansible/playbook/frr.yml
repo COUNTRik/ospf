@@ -4,7 +4,12 @@
   become: true
   
   tasks:
-    - name: Copy ospfd.conf
+    - name: Copy zebra.conf
+      copy:
+        src: ../../config/ospfd1
+        dest: /vagrant/config/ospfd1
+
+    - name: Cat ospfd.conf
       shell: cat /vagrant/config/ospfd1 > /etc/frr/ospfd.conf
     
     - name: OSPF yes
@@ -21,6 +26,11 @@
   
   tasks:
     - name: Copy zebra.conf
+      copy:
+        src: ../../config/ospfd2
+        dest: /vagrant/config/ospfd2
+
+    - name: Cat zebra.conf
       shell: cat /vagrant/config/ospfd2 > /etc/frr/ospfd.conf
 
     - name: OSPF yes
@@ -37,6 +47,11 @@
   
   tasks:
     - name: Copy zebra.conf
+      copy:
+        src: ../../config/ospfd3
+        dest: /vagrant/config/ospfd3
+
+    - name: Cat zebra.conf
       shell: cat /vagrant/config/ospfd3 > /etc/frr/ospfd.conf
  
     - name: OSPF yes
