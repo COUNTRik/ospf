@@ -20,11 +20,17 @@
     - name: Enable forwarding ipv4
       shell: echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 
+    - name: Disable forwarding ipv4 for eth0
+      shell: echo "net.ipv4.conf.eth0.rp_filter = 0" >> /etc/sysctl.conf
+
     - name: Disable forwarding ipv4 for eth1
       shell: echo "net.ipv4.conf.eth1.rp_filter = 0" >> /etc/sysctl.conf
 
     - name: Disable forwarding ipv4 for eth2
       shell: echo "net.ipv4.conf.eth2.rp_filter = 0" >> /etc/sysctl.conf
+
+    # - name: Disable forwarding ipv4 for eth3
+    #   shell: echo "net.ipv4.conf.eth2.rp_filter = 0" >> /etc/sysctl.conf
     
     # - name: Restrat network
     #   systemd:
