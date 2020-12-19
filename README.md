@@ -4,20 +4,20 @@
 
 Дано три роутера *router1, router2, router3* объединенные в сеть в виде треугольника со следующими параметрами
 
-:router1 => [
-             {ip: '10.10.10.1', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan10"},
-             {ip: '10.10.30.1', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan30"},
-            ]   
+    router1 => [
+               {ip: '10.10.10.1', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan10"},
+               {ip: '10.10.30.1', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan30"},
+              ]   
 
-:router2 => [
-             {ip: '10.10.10.2', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan10"},
-             {ip: '10.10.20.2', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan20"},
-            ]
+    router2 => [
+               {ip: '10.10.10.2', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan10"},
+               {ip: '10.10.20.2', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan20"},
+              ]
 
-:router3 => [
-             {ip: '10.10.30.2', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan30"},
-             {ip: '10.10.20.1', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan20"},
-            ]
+    router3 => [
+               {ip: '10.10.30.2', eth: 1, netmask: "255.255.255.252", virtualbox__intnet: "vlan30"},
+               {ip: '10.10.20.1', eth: 2, netmask: "255.255.255.252", virtualbox__intnet: "vlan20"},
+              ]
 
 Запустив стенд *vagrant up* будет установлен *frr*, включен *ip forward*, отключен *rp_filter*.
 
