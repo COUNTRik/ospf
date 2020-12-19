@@ -4,7 +4,7 @@ password zebra
 interface eth1
   ip ospf mtu-ignore
   ip ospf network point-to-point
-  ip ospf cost 50
+  !ip ospf cost 50
   ip ospf hello-interval 5
   ip ospf dead-interval 10
 
